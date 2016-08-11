@@ -27,7 +27,13 @@
             .half{
                 opacity: 0.4;   
             }
+            
             body{
+                height: 100%;
+                width: 100%;
+            }
+            
+            #wrapper{
                 font-family: 'Moritz Sans Web', 'Moritz Sans', Verdana, sans-serif;  
                 padding: 0 20%;
                 color: darkblue;
@@ -121,6 +127,8 @@
     </head>
 
     <body>
+
+        <div id="wrapper">
         
         <header>
             <h1>SA(scrollimate) Prallax Sample Page</h1>
@@ -131,10 +139,7 @@
                  Works on absolutely and relatively positioned elements!
                  <div class="scrollspeed">(this element has a data-bgscroll attribute of 1.5)</div>
             </aside>
-            <aside style="position: absolute; top:50; right:10px;" data-sabglayer="0.3">
-                 Notice the different scroll speed
-                 <div class="scrollspeed">(this element has a data-bgscroll attribute of 0.3)</div>
-            </aside>
+
             <!-- collection of sections -->
             <article>
                 
@@ -168,7 +173,8 @@
             </article>
             
         </main>
-        
+        </div>
+            
         <footer>
             <h2>Copyright &copy; 2016 by <a href="http://www.moritzzimmer.com">Moritz Zimmer</a>.</h2>
         </footer>
