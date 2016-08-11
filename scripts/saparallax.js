@@ -1,5 +1,5 @@
 // parallax Animation, used in some elements
-function parallaxAnimation($saBgLayers, $saInitialHeight, $windowPos){
+function parallaxAnimation($saBgLayers, $saInitialHeight, $windowPos, $speed){
     // loops through each element that is in the scrollimateBgLayers array
     for (i = 0 ; i < $saBgLayers.length;i++){
         // offsets the scrolling in a paralax sort of way.
@@ -7,23 +7,34 @@ function parallaxAnimation($saBgLayers, $saInitialHeight, $windowPos){
 
         // math used if element is positioned absolutely
         if( $($saBgLayers[i]).css("position") === "absolute" ){
-//            $($saBgLayers[i]).css("top", Math.floor(( $saInitialHeight[i].top+($windowPos/2)*1))+"px");
             
             if ($($saBgLayers[i]).attr("data-bglayer") === "centered"){
-                $($saBgLayers[i]).css("transform", "translate3d(-50%, "+Math.floor((($windowPos/2)*1))+"px, 0px)");       
+                $($saBgLayers[i]).css("transform", "translate3d(-50%, "+Math.floor((($windowPos/2)*$speed))+"px, 0px)");       
             }
             else{
-                $($saBgLayers[i]).css("transform", "translate3d(0px, "+Math.floor((($windowPos/2)*1))+"px, 0px)");   
+                // if we don't have an undefined (aka no bglayer attribute, use input as speed)
+                if ( $($saBgLayers[i]).attr("data-bglayer") != "" )  {
+                    var $speed = $($saBgLayers[i]).attr("data-bglayer");
+                }
+                
+                $($saBgLayers[i]).css("transform", "translate3d(0px, "+Math.floor((($windowPos/2)*$speed))+"px, 0px)");   
             }
         }
         // math used if elemented is not absolute
         else{
-//            $($saBgLayers[i]).css("top", Math.floor((($windowPos/2)*1))+"px");
-            if ($($saBgLayers[i]).attr("data-bglayer") === "center"){
-                $($saBgLayers[i]).css("transform", "translate3d(-50%, "+Math.floor((($windowPos/2)*1))+"px, 0px)");       
+            if ($($saBgLayers[i]).attr("data-bglayer") === "centered"){
+                $($saBgLayers[i]).css("transform", "translate3d(-50%, "+Math.floor((($windowPos/2)*$speed))+"px, 0px)");       
             }
             else{
-                $($saBgLayers[i]).css("transform", "translate3d(0px, "+Math.floor((($windowPos/2)*1))+"px, 0px)");   
+                // if we have a number in the data-bglayer, use as speed, if not, default to standard
+                if ( $($saBgLayers[i]).attr("data-bglayer") === "" )  {
+                    var $speed = 1;
+                }
+                else{
+                    var $speed =  $($saBgLayers[i]).attr("data-bglayer"); 
+                }
+                
+                $($saBgLayers[i]).css("transform", "translate3d(0px, "+Math.floor((($windowPos/2)*$speed))+"px, 0px)");   
             }
         }
     }
@@ -31,6 +42,8 @@ function parallaxAnimation($saBgLayers, $saInitialHeight, $windowPos){
 
 // document ready function
 $(function(){
+    
+    var $speed = 1;
     
     // height of viewport (window Height)
     var $initialHeight = "innerHeight" in window 
@@ -50,7 +63,7 @@ $(function(){
     var $saScrollToList = [];
     
     
-        // windowposition variable defines the amount of pixes scrolled from the top
+    // windowposition variable defines the amount of pixes scrolled from the top
     var $windowPos = 0;
     
     // gets the initial position from the top of each element
@@ -59,16 +72,14 @@ $(function(){
         $scrollimageInitialHeight[i] = $($scrollimateBgLayers[i]).offset();
     }
 
-
     // makes sure evertyhing is drawn the first initial time.
-    parallaxAnimation($scrollimateBgLayers, $scrollimageInitialHeight, $windowPos);
+    parallaxAnimation($scrollimateBgLayers, $scrollimageInitialHeight, $windowPos, $speed);
 
- 
     
-    // makes sure the boxes aer drawn accodringly if the window is resized
+    // makes sure the boxes are drawn accodringly if the window is resized
     $(window).resize(function(){
         // redraws the boxes
-        parallaxAnimation($scrollimateBgLayers, $scrollimageInitialHeight, $windowPos); 
+        parallaxAnimation($scrollimateBgLayers, $scrollimageInitialHeight, $windowPos, $speed); 
     });
     
     // when the window is scrolled
@@ -76,14 +87,11 @@ $(function(){
         
         // updates the window position variable
         $windowPos = $(window).scrollTop();
-
         
         // runs the parallax animation function
-        parallaxAnimation($scrollimateBgLayers, $scrollimageInitialHeight, $windowPos);
+        parallaxAnimation($scrollimateBgLayers, $scrollimageInitialHeight, $windowPos, $speed);
         
     });
-    
-    
     
 });
         
