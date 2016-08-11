@@ -23,8 +23,6 @@ Add the follwing custom Data-Attribute to the element that is supposed to scroll
 
 You're good to go, enjoy the parallax effect!
 
----
-
 #### Notes:
 
 SA Parallax will honour both relatively and absolutely positioned elements. Since it is usind the translate3D property, it is only supported by browsers that support this functionality, and may override existing styling done with the transform: translate3D property. 
@@ -32,6 +30,9 @@ SA Parallax will honour both relatively and absolutely positioned elements. Sinc
 #### BUT!
 
 If you are using the `left: 50%; translate: transformX: -50%` to center items on the page, _you can still use saparallax_. Keep reading to find out how!
+
+
+---
 
 
 ### ADVANCED SETUP:
