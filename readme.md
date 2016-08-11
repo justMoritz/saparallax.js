@@ -41,7 +41,7 @@ If you are using the `left: 50%; translate: transformX: -50%` to center items on
 
 As described above, if you are styling an element using  `left: 50%; translate: transformX: -50%` , simply set the data-sabglayer attribute to centered as such: 
     
-    `data-sabglayer="centered"`
+    data-sabglayer="centered"
     
 #### 2.) Speed of scrolling  
 
