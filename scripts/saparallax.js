@@ -8,13 +8,13 @@ function parallaxAnimation($saBgLayers, $saInitialHeight, $windowPos, $speed){
         // math used if element is positioned absolutely
         if( $($saBgLayers[i]).css("position") === "absolute" ){
             
-            if ($($saBgLayers[i]).attr("data-bglayer") === "centered"){
+            if ($($saBgLayers[i]).attr("data-sabglayer") === "centered"){
                 $($saBgLayers[i]).css("transform", "translate3d(-50%, "+Math.floor((($windowPos/2)*$speed))+"px, 0px)");       
             }
             else{
                 // if we don't have an undefined (aka no bglayer attribute, use input as speed)
-                if ( $($saBgLayers[i]).attr("data-bglayer") != "" )  {
-                    var $speed = $($saBgLayers[i]).attr("data-bglayer");
+                if ( $($saBgLayers[i]).attr("data-sabglayer") != "" )  {
+                    var $speed = $($saBgLayers[i]).attr("data-sabglayer");
                 }
                 
                 $($saBgLayers[i]).css("transform", "translate3d(0px, "+Math.floor((($windowPos/2)*$speed))+"px, 0px)");   
@@ -22,16 +22,16 @@ function parallaxAnimation($saBgLayers, $saInitialHeight, $windowPos, $speed){
         }
         // math used if elemented is not absolute
         else{
-            if ($($saBgLayers[i]).attr("data-bglayer") === "centered"){
+            if ($($saBgLayers[i]).attr("data-sabglayer") === "centered"){
                 $($saBgLayers[i]).css("transform", "translate3d(-50%, "+Math.floor((($windowPos/2)*$speed))+"px, 0px)");       
             }
             else{
-                // if we have a number in the data-bglayer, use as speed, if not, default to standard
-                if ( $($saBgLayers[i]).attr("data-bglayer") === "" )  {
+                // if we have a number in the data-sabglayer, use as speed, if not, default to standard
+                if ( $($saBgLayers[i]).attr("data-sabglayer") === "" )  {
                     var $speed = 1;
                 }
                 else{
-                    var $speed =  $($saBgLayers[i]).attr("data-bglayer"); 
+                    var $speed =  $($saBgLayers[i]).attr("data-sabglayer"); 
                 }
                 
                 $($saBgLayers[i]).css("transform", "translate3d(0px, "+Math.floor((($windowPos/2)*$speed))+"px, 0px)");   
@@ -52,8 +52,8 @@ $(function(){
     
     
     // PREP THE DOCUMENT:
-    // gets all elelemts with the data-bgLayer attribute
-    var $scrollimateBgLayers = $("[data-bglayer]");   
+    // gets all elelemts with the data-sabglayer attribute
+    var $scrollimateBgLayers = $("[data-sabglayer]");   
     
         // variable to hold 
     var $saPopInArray = [];  
