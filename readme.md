@@ -1,4 +1,6 @@
 # SA(scollimate) Parallax
+![SA PARALLAX SAMPLE](http://files.moritzzimmer.com/saparallax.gif)
+
 
 ### ABOUT:
 
