@@ -76,7 +76,7 @@ var saparallax = (function( $ ){
     }
   };
 
-  var saParallax = function () {     
+  var _saParallax = function () {     
     // gets all elelemts with the data-sabglayer attribute
     _global.saBgLay = $("[data-sabglayer]");  
 
@@ -108,10 +108,11 @@ var saparallax = (function( $ ){
 
   /* * Init Function * */
   var init = function(input){
-    console.log('Running Scrollimate with the following input: ' + input );
-    
+
     // Document Ready 
     $(function(){
+
+      _saParallax();
 
       // height of viewport (window Height)
       _global.saWinHi = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight; 
@@ -127,15 +128,11 @@ var saparallax = (function( $ ){
         _global.mobileEnabled = false;
       }
 
-      // Code that initiates the window scroll listener, and all code (parallax or otherwise) that goes with it.
       // when the window is scrolled
       $(window).scroll( function(){
         // updates the window position variable
         _global.wp = $(window).scrollTop();
 
-        // console.log( _global.screenSizeMobile );
-
-        /// parallax functionality ///
         if(_global.mobileEnabled === true){
           // runs the parallax animation function, ONLY if the global prlx indicates the parallax function has been initiated
           if(_global.prlx === true){ _parallaxAnimation(_global.saBgLay); }   
@@ -158,9 +155,7 @@ var saparallax = (function( $ ){
    * Public Methods
    */
   return{
-    saParallax: saParallax,
     init: init,
-    enableMobile: enableMobile,
   };
 })(jQuery);
 
