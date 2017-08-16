@@ -4,7 +4,7 @@
 
 ### ABOUT:
 
-Version 2 **(beta)** of the Parallax JQuery Plugin, extensively re-written from the original. This version was pulled from as a standalone version from (https://github.com/justMoritz/scrollimate "scrollimate").
+Version 2 **(beta)** of the Parallax JQuery Plugin, extensively re-written from the original. This version was pulled from as a standalone version from [scrollimate](https://github.com/justMoritz/scrollimate)
 
 
 Parallax Scrolling simply means that as you scroll down the page, elements (usually in the background) scroll slower than the foreground, giving an impression of depth and space. This is the same effect that, when riding a train, makes trees zoom past at seemingly high speed, while the mountains in the background seem to move by much slower, and clouds appear almost stationary.
