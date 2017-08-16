@@ -10,7 +10,7 @@ Version 2 **(beta)** of the Parallax JQuery Plugin, extensively re-written from 
 Parallax Scrolling simply means that as you scroll down the page, elements (usually in the background) scroll slower than the foreground, giving an impression of depth and space. This is the same effect that, when riding a train, makes trees zoom past at seemingly high speed, while the mountains in the background seem to move by much slower, and clouds appear almost stationary.
 
 
-### BSAIC SETUP:
+### BASIC SETUP:
 
 #### 1.) Select the elements which you want to scroll at a slower speed:
 
@@ -54,3 +54,7 @@ By default, parallax will not be enabled on screen sizes smaller than 768px.
 *You can re-enable* mobile parallax by passing the string `enableMobile` to the init method like so: 
 
 	<script> saparallax.init('enableMObile'); </script>
+
+### OLD VERSION
+
+Fell free to check out the `original` branch if you remember and liked the old version.
