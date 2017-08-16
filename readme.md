@@ -23,7 +23,7 @@ Add the follwing custom Data-Attribute to the element that is supposed to scroll
 	<script src="path/to/your/scripts/jquery-2.1.4.min.js"></script>
 	<script src="path/to/your/scripts/saparallax.js"></script>
 
-#### 3.) Call the following function
+#### 3.) Call the following method
 
 	<script> saparallax.init(); </script>
 
@@ -53,4 +53,4 @@ By default, parallax will not be enabled on screen sizes smaller than 768px.
 
 *You can re-enable* mobile parallax by passing the string `enableMobile` to the init method like so: 
 
-	<script> saparallax.init(enableMObile); </script>
+	<script> saparallax.init('enableMObile'); </script>
