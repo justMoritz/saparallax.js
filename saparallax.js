@@ -106,7 +106,6 @@ var saparallax = (function( $ ){
   };
 
 
-
   /* * Init Function * */
   var init = function(input){
     console.log('Running Scrollimate with the following input: ' + input );
@@ -153,8 +152,6 @@ var saparallax = (function( $ ){
 
     });
   };
-
-
 
 
   /* 

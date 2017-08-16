@@ -11,19 +11,20 @@ Parallax Scrolling simply means that as you scroll down the page, elements (usua
 
 ### BSAIC SETUP:
 
-This is a *jQuery Plugin*, so you'll need jQuery. 
-Include jQuery. Include scrollimate.js.
+#### 1.) Select the elements which you want to scroll at a slower speed:
+
+Add the follwing custom Data-Attribute to the element that is supposed to scroll slower.
+
+    data-sabglayer
+    
+#### 2.) In the body, right before the footer: Include jQuery. Include saparallax.js.
 
 	<script src="path/to/your/scripts/jquery-2.1.4.min.js"></script>
 	<script src="path/to/your/scripts/saparallax.js"></script>
 
+#### 3.) Call the following function
 
-#### USAGE 
-
-1. Inlcude JavaScript files from above
-2. add the following data-attribute to the element you wish to parallax scroll: `data-sabglayer`
-3. Call the init Function:
-	`<script> saparallax.init(); </script>`
+	<script> saparallax.init(); </script>
 
 #### ADVANCED SETUP:
 ![SA PARALLAX SAMPLE](http://files.moritzzimmer.com/saparallax3.gif)
