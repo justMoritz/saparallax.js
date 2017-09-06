@@ -152,22 +152,6 @@ var saparallax = (function( $ ){
 
     _global.saBgLay = $("[data-sabglayer]");  
 
-    /** 
-     * Backwards compatibility fix:
-     *
-     * if and ONLY IF there are no sabglayer attributes present, fall back to the old sabglayer.
-     * In order to maintain some sort of discipline, please use one or the other. This feature
-     * is NOT present in the scrollimate release. Please use ONLY data-sabglayer in scrolliamte
-     */
-    if(_global.saBgLay.length === 0){
-      _global.saBgLay = $("[data-bglayer]");  
-      for(i=0; i<_global.saBgLay.length; i++){
-        var currentElement = $(_global.saBgLay[i]);
-        var tempstore = currentElement.attr('data-bglayer');
-        currentElement.attr('data-sabglayer', tempstore);
-      }
-    }
-
     _global.saBgLay.css('will-change', 'transform');
 
     if( _global.saBgLay.length !== 0 ){
@@ -176,6 +160,14 @@ var saparallax = (function( $ ){
       console.log('parallax initiated');
       _global.prlx = true;
     }
+  };
+
+
+  /** 
+  * If this Method is called, Parallax will work even in mobile.
+  */
+  var enableMobile = function(){
+    _global.mobileEnabled = true;
   };
 
 
@@ -190,15 +182,24 @@ var saparallax = (function( $ ){
   */
   var init = function(input){
 
-    _saParallax();
-
-    // let's re-write this to be it's own method that CAN be called, but doesn't have to in the HTML file
-    if (input === 'enableMobile'){
-      _global.mobileEnabled = true;
-    } 
-    else{
-      _global.mobileEnabled = false;
+    /** 
+     * Backwards compatibility fix:
+     *
+     * if and ONLY IF there are no sabglayer attributes present, fall back to the old sabglayer.
+     * In order to maintain some sort of discipline, please use one or the other. This feature
+     * is NOT present in the scrollimate release. Please use ONLY data-sabglayer in scrolliamte
+     */
+    var tempElementStore = $("[data-sabglayer]");  
+    if(tempElementStore.length === 0){
+      tempElementStore = $("[data-bglayer]");  
+      for(i=0; i<tempElementStore.length; i++){
+        var currentElement = $(tempElementStore[i]);
+        var tempstore = currentElement.attr('data-bglayer');
+        currentElement.attr('data-sabglayer', tempstore);
+      }
     }
+
+    _saParallax();
 
     $(function(){
       _global.saWinHi = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight; 
@@ -229,6 +230,7 @@ var saparallax = (function( $ ){
    * Public Methods
    */
   return{
+    enableMobile: enableMobile,
     init: init,
   };
 })(jQuery);
