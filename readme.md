@@ -56,7 +56,7 @@ If you supply it a single number, this is the speed at which you want the elemen
 
 With this, you can define the position of parallaxing element. This is useful if you want the element to be positioned “perfectly” when it is scrolled in the center of the page, for example. `0,5` is usually a good start, buy you may need to play around with the number.
 
-*More importantly*, giving this attribute is useful if the element you wish to parallax is not at the top. The element will only _start_ parallaxing _once in view_, and will be offset by the number specified. (If the second argument is not given, the element will start parallaxing from the very moment the page scrolls).
+*More importantly*, giving this attribute is useful if the element you wish to parallax is not at the top. The element will only _start_ parallaxing _once in view_, and will be offset by the number specified. (If the second argument is not given, the element will start parallaxing from the very moment the page scrolls). If you want to make use of this awesome feature, but do not want to offset, simply set the second number to 0, like so:  `data-sabglayer="1.5, 0"`
 
 
 ## Mobile Control
