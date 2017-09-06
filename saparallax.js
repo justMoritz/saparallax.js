@@ -161,14 +161,14 @@ var saparallax = (function( $ ){
     }
   };
 
-    /** 
-    * Init Function 
-    * 
-    * On Document Ready, calculates the height of viewport (window Height)
-    *
-    * On Window Resize, re-calculate the window height, and re-run parallax, if is enabled
-    * On window scroll, update the window position variable (_global.wp), and re-run parallax, if enabled
-    *
+  /** 
+  * Init Function 
+  * 
+  * On Document Ready, calculates the height of viewport (window Height)
+  *
+  * On Window Resize, re-calculate the window height, and re-run parallax, if is enabled
+  * On window scroll, update the window position variable (_global.wp), and re-run parallax, if enabled
+  *
     */
   var init = function(input){
 
@@ -206,7 +206,6 @@ var saparallax = (function( $ ){
   };
 
 
-
   /* 
    * Public Methods
    */
@@ -215,4 +214,6 @@ var saparallax = (function( $ ){
   };
 })(jQuery);
 
-
+$(function(){
+  saparallax.init();
+});
