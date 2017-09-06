@@ -2,32 +2,44 @@
 ![SA PARALLAX SAMPLE](http://files.moritzzimmer.com/saparallax.gif)
 
 
-### ABOUT:
 
-Version 2 **(beta)** of the Parallax JQuery Plugin, extensively re-written from the original. This version was pulled from as a standalone version from [scrollimate](https://github.com/justMoritz/scrollimate)
 
+### VERSION CONFUSION AHEAD! (But don't worry, it's easy, just keep using Version 1.xx)
+
+This release is deemed **1**.2.0, but is technically and technologically newer than the version 2 in the Version History. This version is, however, completely backwards compatible to version 1.0, and therefore prefereable for applications that are already using SA Parallax. 
+
+(This version, like Version 2, was pulled from as a standalone version from [scrollimate](https://github.com/justMoritz/scrollimate) )
+
+## ABOUT:
 
 Parallax Scrolling simply means that as you scroll down the page, elements (usually in the background) scroll slower than the foreground, giving an impression of depth and space. This is the same effect that, when riding a train, makes trees zoom past at seemingly high speed, while the mountains in the background seem to move by much slower, and clouds appear almost stationary.
 
 
-### BASIC SETUP:
+## BASIC SETUP:
 
-#### 1.) Select the elements which you want to scroll at a slower speed:
+### 1.) Select the elements which you want to scroll at a slower speed:
 
 Add the follwing custom Data-Attribute to the element that is supposed to scroll slower.
 
     data-sabglayer
+
+Alternatively, you can also keep using the old data-attribute
+
+    data-bglayer
+
+Just make sure you use one or the other, but not both :)
     
-#### 2.) In the body, right before the footer: Include jQuery. Include saparallax.js.
+### 2.) In the body, right before the footer: Include jQuery. Include saparallax.js.
 
 	<script src="path/to/your/scripts/jquery-2.1.4.min.js"></script>
 	<script src="path/to/your/scripts/saparallax.js"></script>
 
-#### 3.) Call the following method
+### That's it!
 
-	<script> saparallax.init(); </script>
+Have fun parallaxing around!
 
-#### ADVANCED SETUP:
+
+## ADVANCED SETUP:
 ![SA PARALLAX SAMPLE](http://files.moritzzimmer.com/saparallax3.gif)
 
 See how in this example, the top hero-image parallaxes right away, but each following elements (images) only when it comes into view, and consistently for each element? SA Parallax can do that!
@@ -47,14 +59,14 @@ With this, you can define the position of parallaxing element. This is useful if
 *More importantly*, giving this attribute is useful if the element you wish to parallax is not at the top. The element will only _start_ parallaxing _once in view_, and will be offset by the number specified. (If the second argument is not given, the element will start parallaxing from the very moment the page scrolls).
 
 
-#### Mobile Control ####
+## Mobile Control
 
 By default, parallax will not be enabled on screen sizes smaller than 768px.
 
-*You can re-enable* mobile parallax by passing the string `enableMobile` to the init method like so: 
+*You can re-enable* mobile parallax by calling the `enableMobile` Method at any point in your HTML file **after** you included `saparallax.js`: 
 
-	<script> saparallax.init('enableMObile'); </script>
+	<script> saparallax.enableMobile(); </script>
 
-### OLD VERSION
+## OLD VERSION
 
 Fell free to check out the `original` branch if you remember and liked the old version.
