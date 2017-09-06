@@ -151,6 +151,23 @@ var saparallax = (function( $ ){
   var _saParallax = function () {     
 
     _global.saBgLay = $("[data-sabglayer]");  
+
+    /** 
+     * Backwards compatibility fix:
+     *
+     * if and ONLY IF there are no sabglayer attributes present, fall back to the old sabglayer.
+     * In order to maintain some sort of discipline, please use one or the other. This feature
+     * is NOT present in the scrollimate release. Please use ONLY data-sabglayer in scrolliamte
+     */
+    if(_global.saBgLay.length === 0){
+      _global.saBgLay = $("[data-bglayer]");  
+      for(i=0; i<_global.saBgLay.length; i++){
+        var currentElement = $(_global.saBgLay[i]);
+        var tempstore = currentElement.attr('data-bglayer');
+        currentElement.attr('data-sabglayer', tempstore);
+      }
+    }
+
     _global.saBgLay.css('will-change', 'transform');
 
     if( _global.saBgLay.length !== 0 ){

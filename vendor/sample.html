@@ -136,7 +136,7 @@
         </header>
 
         <main>
-             <aside style="position: absolute; top:50; left:10px;" data-sabglayer="0.33">
+             <aside style="position: absolute; top:50; left:10px;" data-bglayer="0.33">
                  Works on absolutely and relatively positioned elements!
                  <div class="scrollspeed">(this element has a data-bgscroll attribute of 0.33)</div>
             </aside>            
@@ -148,9 +148,9 @@
                     <h3>About</h3>
                     <p>
                         <br><br>
-                        SA Parallax works simply by inluding jQuery, the saparallax.js file, and the data-sabglayer attribute to any dom element.
+                        SA Parallax works simply by inluding jQuery, the saparallax.js file, and the data-bglayer attribute to any dom element.
                         <br><br>
-                        By giving a value to the <span>data-sabglayer</span> attribute, you can control the scroll speed of the elements. Enter a number from <span>0</span> (same as foreground) to <span>2</span> (will appear static).
+                        By giving a value to the <span>data-bglayer</span> attribute, you can control the scroll speed of the elements. Enter a number from <span>0</span> (same as foreground) to <span>2</span> (will appear static).
                         
                         <br>
                         <br>
@@ -159,12 +159,12 @@
                     <h3>Sample Application</h3>
                     
                     <figure>
-                        <img data-sabglayer src="pix/chocolate-chip-cookies-1.jpg" alt="cookies">
+                        <img data-bglayer src="pix/chocolate-chip-cookies-1.jpg" alt="cookies">
                     </figure>
                     <div class="scrollspeed">(this element has a no data-bgscroll attribute set, therefore defaults to 1)</div>
                     <br>
-                    <p><b>Above is a in <span>image</span> in a <span>figure</span> element. the image is roughly twice the height as the figure, the figure is styled with <span>overflow:hidden</span>. Applied to the image within the figure is the data-sabglayer attribute, which causes each element with that style applied to scroll slower than the foreground.<br><br></b></p>
-                    <p data-sabglayer="0.5"><b>Of course you can apply the <span>data-bgscroll</span> attribute to <span>any</span> Dom element, just be careful, you might get results that look kind of weird, like this </b></p>
+                    <p><b>Above is a in <span>image</span> in a <span>figure</span> element. the image is roughly twice the height as the figure, the figure is styled with <span>overflow:hidden</span>. Applied to the image within the figure is the data-bglayer attribute, which causes each element with that style applied to scroll slower than the foreground.<br><br></b></p>
+                    <p data-bglayer="0.5"><b>Of course you can apply the <span>data-bgscroll</span> attribute to <span>any</span> Dom element, just be careful, you might get results that look kind of weird, like this </b></p>
                     <p class="half">Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. </p>
                     <p class="half">Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna. Quisque cursus, metus vitae pharetra auctor, sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi in ipsum sit amet pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas et, augue. Vestibulum tincidunt malesuada tellus. Ut ultrices ultrices enim. Curabitur sit amet mauris. Morbi in dui quis est pulvinar ullamcorper. </p>
                     <p class="half">Nulla facilisi. Integer lacinia sollicitudin massa. Cras metus. Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. Sed pretium blandit orci. </p>
@@ -172,26 +172,26 @@
                     <p class="half">Nulla facilisi. Integer lacinia sollicitudin massa. Cras metus. Sed aliquet risus a tortor. Integer id quam. Morbi mi. Quisque nisl felis, venenatis tristique, dignissim in, ultrices sit amet, augue. Proin sodales libero eget ante. Nulla quam. Aenean laoreet. Vestibulum nisi lectus, commodo ac, facilisis ac, ultricies eu, pede. Ut orci risus, accumsan porttitor, cursus quis, aliquet eget, justo. Sed pretium blandit orci. </p>
                     <h3>Where's my image??'</h3>
                     <figure style="border: 2px solid gold; background-color: #ccc">
-                        <img data-sabglayer="0.7" src="pix/chocolate-chip-cookies-1.jpg" alt="cookies">
+                        <img data-bglayer="0.7" src="pix/chocolate-chip-cookies-1.jpg" alt="cookies">
                     </figure>   
                     <div class="scrollspeed">(this element has a no data-bgscroll attribute set, therefore the background parallaxed out of view when the page started scrolling)</div>                
                     <br><br>
-                    <h3>This is where the data-sabglayer attributes come in handy!</h3>
+                    <h3>This is where the data-bglayer attributes come in handy!</h3>
                     <figure style="border: 2px solid gold">
-                        <img data-sabglayer="0.7, -0.2" src="pix/chocolate-chip-cookies-1.jpg" alt="cookies">
+                        <img data-bglayer="0.7, -0.2" src="pix/chocolate-chip-cookies-1.jpg" alt="cookies">
                     </figure>
-                    <div class="scrollspeed">this element uses <pre style="display: inline; background-color: rgba(255,255,255,0.4); padding: 3px;">data-sabglayer="0.7, -0.2"</pre>, and therefore doesn't begin to parallax until it's in view, and is further shifted upward by 0.2 units, keeping it just where we want it to be!
+                    <div class="scrollspeed">this element uses <pre style="display: inline; background-color: rgba(255,255,255,0.4); padding: 3px;">data-bglayer="0.7, -0.2"</pre>, and therefore doesn't begin to parallax until it's in view, and is further shifted upward by 0.2 units, keeping it just where we want it to be!
                     <br>
                     <br>
                     Notice how all these behave exactly the same based on their relative position on the page and scroll position</div>
                     <figure style="border: 2px solid gold">
-                        <img data-sabglayer="0.7, -0.2" src="pix/chocolate-chip-cookies-1.jpg" alt="cookies">
+                        <img data-bglayer="0.7, -0.2" src="pix/chocolate-chip-cookies-1.jpg" alt="cookies">
                     </figure>
                     <figure style="border: 2px solid gold">
-                        <img data-sabglayer="0.7, -0.2" src="pix/chocolate-chip-cookies-1.jpg" alt="cookies">
+                        <img data-bglayer="0.7, -0.2" src="pix/chocolate-chip-cookies-1.jpg" alt="cookies">
                     </figure>
                     <figure style="border: 2px solid gold">
-                        <img data-sabglayer="0.7, -0.2" src="pix/chocolate-chip-cookies-1.jpg" alt="cookies">
+                        <img data-bglayer="0.7, -0.2" src="pix/chocolate-chip-cookies-1.jpg" alt="cookies">
                     </figure>
                     <br><br><br>
                     <br><br><br>
