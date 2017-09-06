@@ -63,9 +63,9 @@ With this, you can define the position of parallaxing element. This is useful if
 
 By default, parallax will not be enabled on screen sizes smaller than 768px.
 
-*You can re-enable* mobile parallax by passing the string `enableMobile` to the init method like so: 
+*You can re-enable* mobile parallax by calling the `enableMobile` Method at any point in your HTML file **after** you included `saparallax.js`: 
 
-	<script> saparallax.init('enableMObile'); </script>
+	<script> saparallax.enableMobile(); </script>
 
 ## OLD VERSION
 
