@@ -69,4 +69,4 @@ By default, parallax will not be enabled on screen sizes smaller than 768px.
 
 ## OLD VERSION
 
-Fell free to check out the `original` branch if you remember and liked the old version.
+Fell free to check out the `original` branch if you remember and liked the old version. This version is completely backwards compatible to the original version, however! :)
