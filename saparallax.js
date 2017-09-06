@@ -161,6 +161,7 @@ var saparallax = (function( $ ){
     }
   };
 
+
   /** 
   * Init Function 
   * 
@@ -169,11 +170,12 @@ var saparallax = (function( $ ){
   * On Window Resize, re-calculate the window height, and re-run parallax, if is enabled
   * On window scroll, update the window position variable (_global.wp), and re-run parallax, if enabled
   *
-    */
+  */
   var init = function(input){
 
     _saParallax();
 
+    // let's re-write this to be it's own method that CAN be called, but doesn't have to in the HTML file
     if (input === 'enableMobile'){
       _global.mobileEnabled = true;
     } 
@@ -206,7 +208,7 @@ var saparallax = (function( $ ){
   };
 
 
-  /* 
+  /**
    * Public Methods
    */
   return{
@@ -214,6 +216,9 @@ var saparallax = (function( $ ){
   };
 })(jQuery);
 
+/**
+ * Initializes automaticall on document ready
+ */
 $(function(){
   saparallax.init();
 });
