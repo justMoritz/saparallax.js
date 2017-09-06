@@ -20,43 +20,90 @@ var saparallax = (function( $ ){
   };
 
 
-  /* * Parallax Functionality * */
-  var __parallaxHelperFunction = function( saBg, tOfSet, winHi, spd, elHeight, left, flag ){
-    if(flag === 0){
-      tOfSet = 0;
-      winHi = 0;
-      elHeight = 0;
+  /* * Parallax Functionality * * /
+   * 
+   *
+   * The Parallax Animation Chain works as follows: 
+   * 1.) Init -> 
+   * 2.) -> saParallax (setup); 
+   *
+   * 3.) Scroll Listener (inside Init) -> 
+   * 4.) -> _saParallaxAnimation ->
+   * 5.) -> __saParallaxHelperFunction
+   *
+   * 
+   * 5: __saParallaxHelperFunction: 
+   *    Takes the inputOpject object generated inside _saParallaxAnimation 
+   *    to do the actual calculations as they are applied to the individual 
+   *    Elements. 
+   *    This function also checks whether or not the code is run in a mobile
+   *    viewport size, and if so, whether or not it has been indicated that
+   *    the code will run in mobile (which by default it does not) 
+   *
+   *    In case of non-parallax mobile, the final else statement resets all 
+   *    transformations that may have already happened. This is useful in case
+   *    The window is resized from a non-mobile size to a mobile size after 
+   *    transformations have already occurred.
+   */
+  var __saParallaxHelperFunction = function(inputObject){
+
+    var ___executeHelperFunction = function(){
+      if(inputObject.flag === 0){
+        inputObject.tOfSet = 0;
+        inputObject.winHi = 0;
+        inputObject.elHeight = 0;
+      }
+      $(inputObject.saBg).css("transform", "translate3d("+inputObject.left+", "+Math.floor((((_global.wp-inputObject.tOfSet+inputObject.winHi)/2)*inputObject.spd)+inputObject.elHeight)+"px, 0px)");       
+      $(inputObject.saBg).css("-ms-transform", "translate("+inputObject.left+", "+Math.floor((((_global.wp-inputObject.tOfSet+inputObject.winHi)/2)*inputObject.spd)+inputObject.elHeight)+"px)"); 
+    };
+     
+    if(_global.mobileEnabled === true){
+      ___executeHelperFunction();
     }
-    $(saBg).css("transform", "translate3d("+left+", "+Math.floor((((_global.wp-tOfSet+winHi)/2)*spd)+elHeight)+"px, 0px)");       
-    $(saBg).css("-ms-transform", "translate("+left+", "+Math.floor((((_global.wp-tOfSet+winHi)/2)*spd)+elHeight)+"px)"); 
+    else{
+      if ( $(window).width() > 767) {
+        ___executeHelperFunction();
+      }
+      /* Resets all transformations that may have already happened before the window was resized below 768px */
+      else{
+        _global.saBgLay.css('transform', 'translate3d(0, 0, 0)');
+      }
+    }      
   };
 
-  var _parallaxAnimation = function($saBgLayers){
-    // loops through each element that is in the scrollimateBgLayers array
+  /**
+   *
+   * 4: _saParallaxAnimation: 
+   *    Loops through each of the saBgLayers elements. (from saParallax function),
+   *    parses and splits the data-attribute arguments. First is speed, second is position.
+   *
+   *    If only more than argument is given set posFlag to 1, which will cause the
+   *    element to only start parallaxing once in view, and be offset by the number specified.
+   *    elHeight gets passed into the __saParallaxHelperFunction.
+   *    If second argument is not given, element starts parallaxing from the moment page loads.
+   *
+   *    A parallaxHelperConfig object gets passed to __saParallaxHelperFunction,
+   *    which does the actual calculation. If an element been positioned in CSS with 
+   *    translateX(50%) to achieve centering, the 'left' entry in the object is changed accordingly.
+   *    Because of the horizontal nature of parallax scrolling, saParallax does not currently
+   *    support the prevervation of translateY(-50%), though this feature is planned for the future
+   */
+  var _saParallaxAnimation = function($saBgLayers){
     for (i = 0 ; i < $saBgLayers.length ; i++){
+      var posFlag = 0,
+          topoffset = $($saBgLayers[i]).offset().top,
+          elHeight  = $($saBgLayers[i]).css('height');
 
-      var posFlag = 0;
-      var topoffset = $($saBgLayers[i]).offset().top; 
-      var elHeight  = $($saBgLayers[i]).css('height');
       elHeight = parseInt(elHeight, 10);
-      // elHeight = elHeight*0.125;
 
-      // parses the data-attribute to read the arguments. First one is speed, second is position
       var dataBgAttributes = $($saBgLayers[i]).attr('data-sabglayer').split(', ');
 
-      // if only more than argument is given set posFlag to 1,
-      //  which will cause the element to only start parallaxing once in view, and will be offset by the number specified
       if( dataBgAttributes.length > 1 ){
         posFlag = 1;
         elHeight = elHeight*dataBgAttributes[1];
       }
-      // if the second argument is not given, the element will  start parallaxing from the very moment the page loads
 
       if( topoffset < _global.wp+_global.saWinHi){
-        // offsets the scrolling in a paralax sort of way.
-        // we are taking the initial height, adding it and then moving it accordingly in the opposite direction of the scroll.
-
-        // if we have a number in the data-sabglayer, use as speed, if not, default to standard
         if ( $($saBgLayers[i]).attr("data-sabglayer") === "" )  {
           $speed = 1;
         }
@@ -64,91 +111,100 @@ var saparallax = (function( $ ){
           $speed = dataBgAttributes[0]; 
         }
 
-        // keep the translateX attribute currently present
+        parallaxHelperConfig = {
+          saBg: $saBgLayers[i],
+          tOfSet:  topoffset,
+          winHi: _global.saWinHi,
+          spd: $speed,
+          elHeight: elHeight,
+          left: '0px' ,
+          flag: posFlag
+        };
+
         if ($($saBgLayers[i]).css("transform") === "translateX(-50%)"){
-            __parallaxHelperFunction( $saBgLayers[i], topoffset, _global.saWinHi, $speed, elHeight, '-50%', posFlag);
+          parallaxHelperConfig.left = '-50%';
+          __saParallaxHelperFunction( parallaxHelperConfig );
         }
         else{
-            __parallaxHelperFunction( $saBgLayers[i], topoffset, _global.saWinHi, $speed, elHeight, '0px', posFlag);
+          __saParallaxHelperFunction( parallaxHelperConfig );
         }
-          // }
       }
     }
   };
 
+  /**
+   *
+   * 2: saParallax: 
+   *    Intial Setup, parsing and first draw:
+   *
+   *    Selects all the elelemts with the data-sabglayer attribute. These are stored inside 
+   *    a variable within the _global object, because it needs to stay accessible in the 
+   *    entire application, as it is continually used in the $(window).scroll and resize
+   *    functions initialized within the init method.
+   *  
+   *    Method only runs functionality if there are elements present (not no elements).
+   *    Then runs the initial parallax animation.
+   *
+   *    Also finally sets the _global.prlx to true to make sure the scroll and resize functions
+   *    in the init method only calculate and call this function if everything is set.
+   */
   var _saParallax = function () {     
-    // gets all elelemts with the data-sabglayer attribute
+
     _global.saBgLay = $("[data-sabglayer]");  
+    _global.saBgLay.css('will-change', 'transform');
 
-    // Only run functionality if there are no elements
     if( _global.saBgLay.length !== 0 ){
-
-      // variable to hold the initial position from the top of each element.
-      _global.saItHgt = [];  
-
-      // gets the initial position from the top of each element
-      // (needed for absolutely positioned elements)
-      for (i = 0 ; i < _global.saBgLay.length ; i++){
-          _global.saItHgt[i] = $(_global.saBgLay[i]).offset().top;
-      }
-
-      // makes sure evertyhing is drawn the first initial time.
-      _parallaxAnimation(_global.saBgLay);
-
-      // makes sure the boxes are drawn accodringly if the window is resized
-      $(window).resize(function(){
-          _parallaxAnimation(_global.saBgLay); 
-      });
+      _saParallaxAnimation(_global.saBgLay);
       
       console.log('parallax initiated');
       _global.prlx = true;
     }
   };
 
-
-  /* * Init Function * */
+    /** 
+    * Init Function 
+    * 
+    * On Document Ready, calculates the height of viewport (window Height)
+    *
+    * On Window Resize, re-calculate the window height, and re-run parallax, if is enabled
+    * On window scroll, update the window position variable (_global.wp), and re-run parallax, if enabled
+    *
+    */
   var init = function(input){
 
-    // Document Ready 
+    _saParallax();
+
+    if (input === 'enableMobile'){
+      _global.mobileEnabled = true;
+    } 
+    else{
+      _global.mobileEnabled = false;
+    }
+
     $(function(){
-
-      _saParallax();
-
-      // height of viewport (window Height)
       _global.saWinHi = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight; 
-      // updates in case of window resize
+
+
       $(window).resize(function(){
         _global.saWinHi = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight; 
-      });
 
-      if (input === 'enableMobile'){
-        _global.mobileEnabled = true;
-      } 
-      else{
-        _global.mobileEnabled = false;
-      }
+        if( _global.prlx ){
+          _saParallaxAnimation(_global.saBgLay); 
+        }
+      }); // end window resize
 
-      // when the window is scrolled
       $(window).scroll( function(){
-        // updates the window position variable
         _global.wp = $(window).scrollTop();
 
-        if(_global.mobileEnabled === true){
-          // runs the parallax animation function, ONLY if the global prlx indicates the parallax function has been initiated
-          if(_global.prlx === true){ _parallaxAnimation(_global.saBgLay); }   
+        if( _global.prlx ){
+          _saParallaxAnimation(_global.saBgLay); 
         }
-        else{
-          // only execute the when we are on a mobile screen
-          if ( $(window).width() > 767) {      
-            // runs the parallax animation function, ONLY if the global prlx indicates the parallax function has been initiated
-            if(_global.prlx === true){ _parallaxAnimation(_global.saBgLay); }   
-          } 
-        } 
-        
-      });
+      }); // end window scroll
 
-    });
+    }); // end document ready
+
   };
+
 
 
   /* 
