@@ -6,7 +6,7 @@
 
 ### VERSION CONFUSION AHEAD! (But don't worry, it's easy, just keep using Version 1.xx)
 
-This release is deemed **1**.2.0, but is technically and technologically newer than the version 2 in the Version History. This version is, however, completely backwards compatible to version 1.0, and therefore prefereable for applications that are already using SA Parallax. 
+This release is deemed **1**.2.0, but is technically and technologically newer than the version 2 in the Version History. This version is, however, completely backwards compatible to version 1.0, and therefore preferable for applications that are already using SA Parallax. 
 
 (This version, like Version 2, was pulled from as a standalone version from [scrollimate](https://github.com/justMoritz/scrollimate) )
 
@@ -19,7 +19,7 @@ Parallax Scrolling simply means that as you scroll down the page, elements (usua
 
 ### 1.) Select the elements which you want to scroll at a slower speed:
 
-Add the follwing custom Data-Attribute to the element that is supposed to scroll slower.
+Add the following custom Data-Attribute to the element that is supposed to scroll slower.
 
     data-sabglayer
 
@@ -52,7 +52,7 @@ The `data-sabglayer` will take two arguments:*
 
 If you supply it a single number, this is the speed at which you want the element to scroll relative to the page speed. To create several layers of parallax, or simply to more fine-tune the effect, you can se the `data-sabglayer` attribute to any floating point value between 0 (which will cause the element to scroll normally) and 2 (which will cause the element to appear static on the page). You can also use any number larger than 2, which will cause the element to scroll in the opposite direction of the scroll! And yes, you can also use negative numbers and make the element scroll faster than the page!
   
-- Supply two argments seperated by comma like so: `data-sabglayer="-0.5, 0.36"`
+- Supply two arguments separated by comma like so: `data-sabglayer="-0.5, 0.36"`
 
 With this, you can define the position of parallaxing element. This is useful if you want the element to be positioned “perfectly” when it is scrolled in the center of the page, for example. `0,5` is usually a good start, buy you may need to play around with the number.
 
