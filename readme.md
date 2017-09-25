@@ -2,13 +2,7 @@
 ![SA PARALLAX SAMPLE](http://files.moritzzimmer.com/saparallax.gif)
 
 
-
-
-### VERSION CONFUSION AHEAD! (But don't worry, it's easy, just keep using Version 1.xx)
-
-This release is deemed **1**.2.0, but is technically and technologically newer than the version 2 in the Version History. This version is, however, completely backwards compatible to version 1.0, and therefore preferable for applications that are already using SA Parallax. 
-
-(This version, like Version 2, was pulled from as a standalone version from [scrollimate](https://github.com/justMoritz/scrollimate) )
+(This version was pulled from as a standalone version from [scrollimate](https://github.com/justMoritz/scrollimate) )
 
 ## ABOUT:
 
