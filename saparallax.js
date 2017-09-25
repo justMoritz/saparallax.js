@@ -100,14 +100,7 @@ var saparallax = (function( $ ){
 
       if( dataBgAttributes.length > 1 ){
         posFlag = 1;
-        // if set to center, math will attempt to keep the item always in view.
-        if (dataBgAttributes[1] === 'center'){
-          elHeight = -(elHeight/2)*dataBgAttributes[0];
-        }
-        // otherwise, use tranditional logic.
-        else{
-          elHeight = elHeight*dataBgAttributes[1];
-        }
+        elHeight = elHeight*dataBgAttributes[1];
       }
 
       if( topoffset < _global.wp+_global.saWinHi){
