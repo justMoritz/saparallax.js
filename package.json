@@ -1,0 +1,24 @@
+{
+  "name": "saparallax",
+  "version": "1.3.5",
+  "description": "A little jQuery Plugin that adds a customizable Parallax Scrolling Effect to any element.",
+  "main": "saparallax.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/justMoritz/saparallax.js.git"
+  },
+  "keywords": [
+    "Parallax",
+    "parallax",
+    "scrolling"
+  ],
+  "author": "Moritz Zimmer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/justMoritz/saparallax.js/issues"
+  },
+  "homepage": "https://github.com/justMoritz/saparallax.js#readme"
+}
