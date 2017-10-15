@@ -34,12 +34,11 @@ Have fun parallaxing around!
 
 
 ## ADVANCED SETUP:
-
 *You can tell the `data-sabglayer` attribute how your parallax animation should behave.
 By Default, it will simply start at the top and will scroll at half the speed that the page once you start scrolling.
 The `data-sabglayer` will take two arguments:*
 
-#### Adjust scroll speed
+### Adjust scroll speed
 
 - Supply a single number like so: `data-sabglayer="0.5"`
 
@@ -47,7 +46,7 @@ Supply it a single number, this is the speed at which you want the element to sc
 
 You can also use any number larger than 2, which will cause the element to scroll in the opposite direction of the scroll. And yes, you can also use negative numbers and make the element scroll faster than the page!
 
-#### Centering / Offset Control 
+### Centering / Offset Control 
 
 ![SA PARALLAX SAMPLE](http://files.moritzzimmer.com/saparallax3.gif)
 
@@ -58,27 +57,25 @@ You can supply more than one argument to SA Parallax. This is useful if the elem
 
 **NEW in 1.3:**
 
+#### Keep Elements Centered
+
  - Supply two arguments (separated by comma), with the second argument set to *center* like so: `data-sabglayer="-0.5, center"`
 
-This will attempt to calculate parallax in such a way that will keep the item centered in the screen. Ideally, you would never see it parallax out of view in either direction.
+This will calculate the parallax so that the element will be in it's “ideal” position when centered vertically on the screen. Plus, (ideally) you would never see it parallax out of view in either direction. (Mileage may vary...)
 
-#### Offset Elements
+#### Custom Offset Elements
   
-- Supply two arguments separated by comma like so: `data-sabglayer="-0.5, 0.36"`
+- Supply a second argument separated by comma like so: `data-sabglayer="-0.5, 0.25"`
 
-With this, you can define the position of parallaxing element. This is useful if you want the element to be positioned “perfectly” when it is scrolled in the center of the page, for example. `0,5` is usually a good start, buy you may need to play around with the number.
+With this, you can define the position of parallaxing element. This is useful if you want the fine-control the element’s be position. This number is the fraction it is offset by it’s own hight. For example, `0.5` on a 500px tall element will cause it to be offset by 250px, `1` by 500px, etc.
 
- and will be offset by the number specified. (If the second argument is not given, the element will start parallaxing from the very moment the page scrolls). If you want to make use of this awesome feature, but do not want to offset, simply set the second number to 0, like so:  `data-sabglayer="1.5, 0"`
+If you don't want the element to be offset, but not start parallaxing until in view, simply set the second number to 0, like so:  `data-sabglayer="1.5, 0"`
 
 
-## Mobile Control
+#### <a name="saParallaxMobile"></a>MOBILE CONTROL ####
 
-By default, parallax will not be enabled on screen sizes smaller than 768px.
+By default, parallax will not be enabled on screen sizes smaller than 768px. (Sidenote: This applies to initial screen-size: Whatever your page loaded with, determined whether or not parallax is enabled. This is by design so that check is not performed over and over).
 
-*You can re-enable* mobile parallax by calling the `enableMobile` Method at any point in your HTML file **after** you included `saparallax.js`: 
-
-	<script> saparallax.enableMobile(); </script>
-
-## OLD VERSION
-
-Fell free to check out the `original` branch if you remember and liked the old version. This version is completely backwards compatible to the original version, however! :)
+*You can re-enable* mobile parallax by calling the `enableMobile` before the saParallax method like so: 
+    `<script> scrollimate.init(['enableMobile', 'saParallax']); </script>`
+(If you are running the init function with other methods the order doens't matter, as long as saParallax gets called last).

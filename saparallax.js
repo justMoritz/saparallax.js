@@ -90,13 +90,14 @@ var saparallax = (function( $ ){
    */
   var _saParallaxAnimation = function($saBgLayers){
     for (i = 0 ; i < $saBgLayers.length ; i++){
-      var posFlag = 0,
-          topoffset = $($saBgLayers[i]).offset().top,
-          elHeight  = $($saBgLayers[i]).css('height');
+      var posFlag   = 0,
+          $curEl    = $($saBgLayers[i]),
+          topoffset = $curEl.offset().top,
+          elHeight  = $curEl.css('height');
 
       elHeight = parseInt(elHeight, 10);
 
-      var dataBgAttributes = $($saBgLayers[i]).attr('data-sabglayer').split(', ');
+      var dataBgAttributes = $curEl.attr('data-sabglayer').split(', ');
 
       if( dataBgAttributes.length > 1 ){
         posFlag = 1;
@@ -110,8 +111,8 @@ var saparallax = (function( $ ){
         }
       }
 
-      if( topoffset < _global.wp+_global.saWinHi){
-        if ( $($saBgLayers[i]).attr("data-sabglayer") === "" )  {
+      // if( topoffset < _global.wp+_global.saWinHi){
+        if ( $curEl.attr("data-sabglayer") === "" )  {
           $speed = 1;
         }
         else{
@@ -128,14 +129,12 @@ var saparallax = (function( $ ){
           flag: posFlag
         };
 
-        if ($($saBgLayers[i]).css("transform") === "translateX(-50%)"){
+        if ($curEl.css("transform") === "translateX(-50%)"){
           parallaxHelperConfig.left = '-50%';
-          __saParallaxHelperFunction( parallaxHelperConfig );
         }
-        else{
-          __saParallaxHelperFunction( parallaxHelperConfig );
-        }
-      }
+
+        __saParallaxHelperFunction( parallaxHelperConfig );
+      // }
     }
   };
 
@@ -158,7 +157,6 @@ var saparallax = (function( $ ){
   var _saParallax = function () {     
 
     _global.saBgLay = $("[data-sabglayer]");  
-
     _global.saBgLay.css('will-change', 'transform');
 
     if( _global.saBgLay.length !== 0 ){

@@ -1,0 +1,24 @@
+{
+  "name": "saparallax",
+  "main": "saparallax.js",
+  "homepage": "https://github.com/justMoritz/saparallax.js",
+  "authors": [
+    "Moritz Zimmer <moritz@zimmermail.net>"
+  ],
+  "description": "A little jQuery Plugin that adds a customizable Parallax Scrolling Effect to any element.",
+  "keywords": [
+    "Parallax",
+    "Javascript",
+    "JQuery",
+    "parallax",
+    "effect"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
