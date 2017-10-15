@@ -57,13 +57,13 @@ You can supply more than one argument to SA Parallax. This is useful if the elem
 
 **NEW in 1.3:**
 
-### Keep Elements Centered
+#### Keep Elements Centered
 
  - Supply two arguments (separated by comma), with the second argument set to *center* like so: `data-sabglayer="-0.5, center"`
 
 This will calculate the parallax so that the element will be in it's “ideal” position when centered vertically on the screen. Plus, (ideally) you would never see it parallax out of view in either direction. (Mileage may vary...)
 
-### Custom Offset Elements
+#### Custom Offset Elements
   
 - Supply a second argument separated by comma like so: `data-sabglayer="-0.5, 0.25"`
 
